@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nationsmatsalen</title>
+  <link rel="stylesheet" href="css/nationPub.css">
+</head>
+<body>
+  <div id="ordering">
+    <h1>{{ uiLabels.food }}</h1>
+    <label v-for="menuitem in menu.foods">
+      <input type="checkbox" name="item[]" :value="menuitem.label" />
+      {{menuitem.label}}
+    </label>
+    <h1>{{ uiLabels.drinks }}</h1>
+    <label v-for="menuitem in menu.drinks">
+      <input type="checkbox" name="item[]" :value="menuitem.label" />
+      {{menuitem.label}}
+    </label>
+    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+    <h1>Vad pysslar de med <a href="/kitchen">i köket?</a></h1>
+    <h2>{{ uiLabels.ordersInProgress }}</h2>
+    <ol>
+      <li v-for="(item, key) in orders" v-if="!item.done"> {{ key }} : {{ item.orderItems.join(', ') }}</li>
+    </ol>
+    <h2>{{ uiLabels.ordersFinished }}</h2>
+    <ol>
+      <li v-for="(item, key) in orders" v-if="item.done"> {{ key }} : {{ item.orderItems.join(', ') }}</li>
+    </ol>
+  </div>
+  <script src="/vue/vue.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/nationPub.js"></script>
+  <script src="js/diner.js"></script>
+</body>
+</html>

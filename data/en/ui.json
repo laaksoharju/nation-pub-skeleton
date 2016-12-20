@@ -1,0 +1,8 @@
+{
+  "ordersFinished" : "Finshed orders",
+  "ordersInQueue" : "Order queue",
+  "placeOrder" : "Place order",
+  "food" : "Food",
+  "drinks" : "Drinks",
+  "ready" : "Done"
+}

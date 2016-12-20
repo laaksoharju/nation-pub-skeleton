@@ -1,0 +1,44 @@
+{
+  "foods": [
+    {
+    "order": 1,
+      "label": "Ostburgare",
+      "options": [
+        { "extra": "Lök"
+        },
+        { "extra": "Ost"
+        }
+      ]
+    },
+    {
+    "order": 2,
+      "label": "Veganburgare",
+      "options": [
+        { "extra": "Lök"
+        },
+        { "extra": "Tryffel"
+        }
+      ]
+    }
+  ],
+  "drinks": [
+    {
+    "order": 1,
+      "label": "Cola",
+      "options": [
+        { "extra": "Is"
+        },
+        { "extra": "Citron"
+        }
+      ]
+    },
+    {
+    "order": 2,
+      "label": "Öl",
+      "options": [
+        { "extra": "Citron"
+        }
+      ]
+    }
+  ]
+}
