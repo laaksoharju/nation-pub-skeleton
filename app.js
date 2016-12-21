@@ -1,10 +1,12 @@
+/* jslint node: true */
+'use strict';
+
 // Require express, socket.io, and vue
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
-var Vue = require('vue');
 
 // Pick arbitrary port
 var port = 3000;
@@ -18,7 +20,7 @@ var getLabelsAndMenu = function() {
   var ui = require("./data/"+ lang +"/ui.json");
   var menu = require("./data/"+ lang +"/menu.json");
   return {uiLabels: ui, menu: menu};
-}
+};
 
 // Store orders in a an anonymous class for now. 
 var orders = function() {
@@ -28,22 +30,22 @@ var orders = function() {
     orders[dish.orderId] ={};
     orders[dish.orderId].orderItems = dish.orderItems;
     orders[dish.orderId].done = false;
-  }
+  };
 
   var getAll = function() {
     return orders;
-  }
+  };
 
   var markDone = function(orderId) {
     orders[orderId].done = true;
-  }
+  };
 
   //expose functions
   return {
     addOrder : addOrder,
     getAll : getAll,
     markDone : markDone
-  }
+  };
 }(); // instantiate the class immediately
 
 // Serve static assets from public/
@@ -69,12 +71,12 @@ io.on('connection', function(socket) {
   socket.on('order', function(dish) {
     orders.addOrder(dish);
     io.emit('currentQueue', orders.getAll());
-  })
+  });
 
   socket.on('orderDone', function(orderId) {
     orders.markDone(orderId);
     io.emit('currentQueue', orders.getAll());
-  })
+  });
 });
 
 http.listen(app.get('port'), function() {

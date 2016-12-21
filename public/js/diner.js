@@ -1,3 +1,6 @@
+/* global sharedVueStuff, Vue, socket */
+'use strict';
+
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -5,16 +8,14 @@ function getRandomInt(min, max) {
 }
 
 function getOrderNumber() {
-  // It's probably not a good idea to generate a random order number. 
+  // It's probably not a good idea to generate a random order number, client-side. 
   // A better idea would be to let the server decide.
   return "#" + getRandomInt(1, 1000000);
 }
 
-var socket = io();
-
-var vue = new Vue({
+new Vue({
   el: '#ordering',
-  mixins: [sharedVueStuff],
+  mixins: [sharedVueStuff], // include stuff that goes to both diner and kitchen
   methods: {
     placeOrder: function() {
       // create an array of checked items to order

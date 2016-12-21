@@ -1,8 +1,9 @@
-var socket = io();
+/* global sharedVueStuff, Vue, socket */
+'use strict';
 
-var vue = new Vue({
+new Vue({
   el: '#orders',
-  mixins: [sharedVueStuff],
+  mixins: [sharedVueStuff], // include stuff that goes to both diner and kitchen
   methods: {
     markDone: function(orderid) {
       this.orders[orderid].done = true;

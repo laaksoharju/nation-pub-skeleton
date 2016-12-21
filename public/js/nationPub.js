@@ -1,3 +1,10 @@
+/* global io */
+/* exported sharedVueStuff */
+'use strict';
+
+var socket = io();
+
+// Stuff that goes to both diner and kitchen
 var sharedVueStuff = {
   data: {
     orders: {},
@@ -15,4 +22,4 @@ var sharedVueStuff = {
       this.orders = data;
     }.bind(this));
   }
-}
+};
