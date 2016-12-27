@@ -24,7 +24,7 @@ var getLabelsAndMenu = function() {
 
 // Store orders in a an anonymous class for now. 
 var orders = function() {
-  orders = {};
+  var orders = {};
 
   var addOrder = function(dish) {
     orders[dish.orderId] ={};
