@@ -2,7 +2,8 @@
   "ordersFinished" : "Finshed orders",
   "ordersInQueue" : "Order queue",
   "placeOrder" : "Place order",
-  "food" : "Food",
+  "mains" : "Main courses",
+  "sideorders" : "Side orders",
   "drinks" : "Drinks",
   "ready" : "Done"
 }

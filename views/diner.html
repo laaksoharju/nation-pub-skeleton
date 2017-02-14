@@ -8,15 +8,31 @@
 </head>
 <body>
   <div id="ordering">
-    <h1>{{ uiLabels.food }}</h1>
-    <label v-for="menuitem in menu.foods">
+    <h1>{{ uiLabels.mains }}</h1>
+    <div v-for="menuitem in menu.foods">
+      <h2>
+        <label>
+          <input type="checkbox" v-model="mainDish" :value="menuitem.label" />
+          {{menuitem.label}}, {{menuitem.price}}:-
+        </label>
+      </h2>
+      <div>
+        Extra: 
+        <label v-for="detail in menuitem.details">
+          <input type="checkbox" v-model="extras" :value="menuitem.label + '::' + detail.extra" />
+          {{detail.extra}}, {{detail.price}}:-
+        </label>      
+      </div>
+    </div>
+    <h1>{{ uiLabels.sideorders }}</h1>
+    <label v-for="menuitem in menu.sideorders">
       <input type="checkbox" name="item[]" :value="menuitem.label" />
-      {{menuitem.label}}
+      {{menuitem.label}}, {{menuitem.price}}:-
     </label>
     <h1>{{ uiLabels.drinks }}</h1>
     <label v-for="menuitem in menu.drinks">
       <input type="checkbox" name="item[]" :value="menuitem.label" />
-      {{menuitem.label}}
+      {{menuitem.label}}, {{menuitem.size}} cl, {{menuitem.price}}:-
     </label>
     <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
     <h1>Vad pysslar de med <a href="/kitchen">i köket?</a></h1>
