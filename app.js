@@ -12,10 +12,10 @@ var path = require('path');
 var port = 3000;
 app.set('port', (process.env.PORT || port));
 
-// Language should be device specific but default is set here
+// Language should be user specific but default is set here
 var lang = "sv";
 
-//
+// get the JSON objects for the dictated language. Wonder if functions take arguments? ;-)
 var getLabelsAndMenu = function() {
   var ui = require("./data/"+ lang +"/ui.json");
   var menu = require("./data/"+ lang +"/menu.json");
